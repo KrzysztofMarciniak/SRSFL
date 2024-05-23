@@ -1,0 +1,32 @@
+version: '3'
+services:
+  attacker:
+    build:
+      context: .
+      dockerfile: Dockerfile_attacker
+    container_name: attacker_container
+    networks:
+      - my_network
+    ports:
+      - "1234:1234"  
+    volumes:
+      - ./code:/code  
+    tty: true
+    stdin_open: true  
+
+  victim:
+    build:
+      context: .
+      dockerfile: Dockerfile_victim
+    container_name: victim_container
+    networks:
+      - my_network
+    volumes:
+      - ./code:/code  
+    ports:
+      - "8081:80"  
+    tty: true
+    stdin_open: true 
+networks:
+  my_network:
+    driver: bridge
