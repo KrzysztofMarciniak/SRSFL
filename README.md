@@ -17,9 +17,9 @@ Simple Reverse Shell For Linux written is a minimalist yet powerful tool designe
 
 (`docker exec -it attacker_container /bin/bash`) to get shell on attack container.
 
-and then:
+
 (`nc -lvp 1234`) to enable the listener.
 
-(`docker exec -it victim_container /bin/bash`) shell on victim container, to turn on reverse shell binary.
+(`docker exec -it victim_container /bin/bash`) to get shell on victim container.
 
 (`cd code; ./reverseShell`) - to run reverse shell.
