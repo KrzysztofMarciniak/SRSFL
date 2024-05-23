@@ -3,6 +3,7 @@
 
 #include "Connection.h"
 #include "SystemInfo.h"
+#include <string>
 
 class ReverseShell {
 public:
@@ -12,6 +13,7 @@ public:
 private:
     Connection conn;
     SystemInfo sysInfo;
+    void handleShell(int sockfd, int pty_fd); // Add sockfd parameter
 };
 
-#endif 
+#endif // REVERSE_SHELL_H
