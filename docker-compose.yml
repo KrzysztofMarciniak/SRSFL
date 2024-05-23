@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile_attacker
     container_name: attacker_container
+    hostname: attacker
     networks:
       - my_network
     ports:
@@ -19,14 +20,13 @@ services:
       context: .
       dockerfile: Dockerfile_victim
     container_name: victim_container
+    hostname: victim
     networks:
       - my_network
     volumes:
       - ./code:/code  
     ports:
-      - "8081:80"  
-    tty: true
-    stdin_open: true 
+      - "2223:22"
 networks:
   my_network:
     driver: bridge

@@ -1,8 +1,6 @@
 FROM ubuntu:latest
 
-RUN apt-get update && \
-    apt-get install -y apache2
+RUN apt-get update && apt-get install -y openssh-server
 
-EXPOSE 80
-
-CMD ["apache2ctl", "-D", "FOREGROUND"]
+RUN mkdir -p /run/sshd && chmod 0755 /run/sshd
+CMD ["/usr/sbin/sshd", "-D"]

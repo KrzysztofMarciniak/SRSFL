@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -pedantic -std=c++11 -g
 
 TARGET = reverse_shell
-SRCS = main.cpp Socket.cpp Connection.cpp SystemInfo.cpp ReverseShell.cpp
+SRCS = main.cpp ReverseShell.cpp Connection.cpp Socket.cpp SystemInfo.cpp Persistence.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(TARGET)
@@ -10,7 +10,7 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
-%.o: %.cpp
+.cpp.o:
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
