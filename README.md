@@ -3,7 +3,7 @@ Simple Reverse Shell For Linux written is a minimalist yet powerful tool designe
 
 * Reverse Shell: SRSFL enables remote access to a target Linux system by establishing a reverse shell connection. This allows an attacker to control the victim system remotely.
 
-* Persistence: SRSFL ensures persistence on the target system by adding an SSH key to the root user's authorized_keys file and checking its existence every minute using a cronjob. This ensures that even if the system is restarted, the attacker can regain access without the need for manual intervention.
+* Persistence: SRSFL ensures persistence on the target system by adding an SSH key to the root user's authorized_keys file and checking its existence every minute using a cronjob. This ensures that even if the key is deleted, the attacker can regain access without the need for manual intervention.
 
 ### Setup:
 
